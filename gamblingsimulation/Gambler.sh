@@ -3,5 +3,17 @@
 echo "Welcome"
 
 #CONSTANT VARIABLES
-STAKE=100
+MYSTAKE=100
 BET=1
+
+#VARIABLES
+stake=$MYSTAKE
+
+#CHECK WIN OR LOOSE
+randomCheck=$((RANDOM%2))
+if (( randomCheck == 0 ))
+then
+	stake=$(($stake+$BET))
+else
+	stake=$(($stake-$BET))
+fi
