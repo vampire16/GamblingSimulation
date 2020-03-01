@@ -45,14 +45,14 @@ do
 			result="loose"
 		fi
 	((day++))
-	echo "$day day $FIFTYPERCENTSTAKE $result"
-	done
-	totalWin=$(($win*$FIFTYPERCENTSTAKE))
-	totalLoose=$(($loose*$FIFTYPERCENTSTAKE))
-	echo "Total win for a day : $totalWin"
-	echo "Total loose for a day : $totalLoose"
-	monthlystake=0
-	win=0
-	loose=0
-	day=0
+echo "$day day $FIFTYPERCENTSTAKE $result"
+done
+totalWin=$(($win*$FIFTYPERCENTSTAKE))
+totalLoose=$(($loose*$FIFTYPERCENTSTAKE))
+echo "Total win for a day : $totalWin"
+echo "Total loose for a day : $totalLoose"
+monthlystake=0
+win=0
+loose=0
+day=0
 done
