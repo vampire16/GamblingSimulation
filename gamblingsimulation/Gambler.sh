@@ -30,9 +30,9 @@ do
 	done
 	if (( stake > MAXFIFTYPERCENT ))
 	then
-		((win++))
+		(( win++ ))
 	else
-		((loose++))
+		(( loose++ ))
 	fi
 done
 totalWin=$(($win*$FIFTYPERCENTSTAKE))
