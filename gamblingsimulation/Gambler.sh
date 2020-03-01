@@ -17,6 +17,7 @@ monthlystake=0
 day=0
 result=""
 
+declare -a monthlyStakeArray
 read -p "Enter months : " MONTH
 #CHECK WIN OR LOOSE
 for (( month=1; month<=MONTH; month++ ))
@@ -44,15 +45,32 @@ do
 			monthlystake=$(($monthlystake-$FIFTYPERCENTSTAKE))
 			result="loose"
 		fi
-	((day++))
-	echo "$day day $FIFTYPERCENTSTAKE $result"
+		((day++))
+		monthlyStakeArray[$day]=$monthlystake
+		echo "$day day $FIFTYPERCENTSTAKE $result $monthlystake"
 	done
-totalWin=$(($win*$FIFTYPERCENTSTAKE))
-totalLoose=$(($loose*$FIFTYPERCENTSTAKE))
-echo "Total win for a day : $totalWin"
-echo "Total loose for a day : $totalLoose"
-monthlystake=0
-win=0
-loose=0
-day=0
+	luckiestDay=${monthlyStakeArray[1]}
+	unluckiestDay=${monthlyStakeArray[1]}
+	for (( i=1; i<=${#monthlyStakeArray[@]}; i++ ))
+	do	
+		if (( luckiestDay < ${monthlyStakeArray[$i]}))
+		then
+			luckiestDay=${monthlyStakeArray[$i]}
+			luckyDay=$i
+		elif ((unluckiestDay > ${monthlyStakeArray[$i]} ))
+		then	
+			unluckiestDay=${monthlyStakeArray[$i]}
+			unluckyDay=$i
+		fi
+	done
+	totalWin=$(($win*$FIFTYPERCENTSTAKE))
+	totalLoose=$(($loose*$FIFTYPERCENTSTAKE))
+	echo "Total win for a day : $totalWin"
+	echo "Total loose for a day : $totalLoose"
+	echo "luckiest day is $luckyDay = $luckiestDay"
+	echo "unluckiest day is $unluckyDay = $unluckiestDay"
+	monthlystake=0
+	win=0
+	loose=0
+	day=0
 done
