@@ -69,6 +69,18 @@ do
 	echo "Total loose for a day : $totalLoose"
 	echo "luckiest day is $luckyDay = $luckiestDay"
 	echo "unluckiest day is $unluckyDay = $unluckiestDay"
+	if (( win > loose ))
+	then
+		read -p "Would you like to continue ? (yes or no) " choice
+		if (( choice == "yes"))
+		then	
+			echo "OK"
+		else	
+			break
+		fi
+	else	
+		break
+	fi
 	monthlystake=0
 	win=0
 	loose=0
