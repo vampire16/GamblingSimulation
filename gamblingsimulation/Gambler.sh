@@ -45,8 +45,8 @@ do
 			result="loose"
 		fi
 	((day++))
-echo "$day day $FIFTYPERCENTSTAKE $result"
-done
+	echo "$day day $FIFTYPERCENTSTAKE $result"
+	done
 totalWin=$(($win*$FIFTYPERCENTSTAKE))
 totalLoose=$(($loose*$FIFTYPERCENTSTAKE))
 echo "Total win for a day : $totalWin"
